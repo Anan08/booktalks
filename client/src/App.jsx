@@ -4,6 +4,7 @@ import Home from "./pages/Home";
 import NotFound from "./pages/NotFound";
 import Books from "./pages/Books";
 import Register from "./pages/Register";
+import Login from "./pages/Login";
 
 function App() {
   return (
@@ -13,7 +14,7 @@ function App() {
         <Route path="/books" element={<Books/>} />
         {/* <Route path="/channel" element={<Channel/>} /> */}
         <Route path="/register" element={<Register/>} />
-        {/* <Route path="/register" element={<Register/>} /> */}
+        <Route path="/login" element={<Login/>} />
         <Route path="*" element={<NotFound/>} />
       </Routes>
     </Router>

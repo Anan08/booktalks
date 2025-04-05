@@ -3,6 +3,7 @@ import cors from "cors";
 import dotenv from 'dotenv';
 import mongoose from "mongoose";
 import authRouter from "./routes/auth.js";
+import session from "express-session";
 
 dotenv.config();
 
@@ -26,6 +27,16 @@ const dbConnection = async () => {
 dbConnection();
 
 app.use('/api/auth', authRouter);
+app.use(session({
+    secret: "HOOH",
+    resave: false,
+    saveUninitialized: true,
+    cookie: { 
+        secure: false,
+        httpOnly: false,
+        maxAge: 1000 * 60 * 60 * 24 ,
+     } // Set to true if using HTTPS
+}));
 
 app.listen(port, () => {
     console.log(`Server Listening on Port ${port}`);

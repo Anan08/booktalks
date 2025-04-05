@@ -2,15 +2,24 @@ import React from 'react'
 import { Link, Outlet } from 'react-router-dom'
 
 const Hero = () => {
+  const isLogged = false
   return (
     <div className='flex space-x-3 w-full'>
       <div className='bg-white font-dm_sans h-[550px] w-[50%] rounded-xl shadow-md p-10'>
         <div>
-          <div className='flex space-x-5 h-full '>
+          <div className='flex justify-between h-full items-center'>
             <Link to={"/"} className='flex items-center space-x-2'>
               <h1 className='text-lg font-bold text-gray-800 font-dm'>BookTalks</h1>
             </Link>
-            <input type="text" placeholder='Search Book..' className='bg-gray-100 px-3 rounded-xl text-sm w-fll w-[100%] active:border-blue-300'/>
+            {isLogged ? (
+              <Link to={"/profile"} className='flex items-center space-x-2'>
+                <h1 className='text-lg font-bold text-gray-800 font-dm'>Profile</h1>
+              </Link>
+            ) : (
+              <Link to={"/login"} className='flex items-center space-x-2'>
+                <h1 className='text-sm bg-gray-400 font-medium text-gray-800 font-dm p-2 rounded-xl hover:bg-gray-200 hover:text-gray-400 ease-in-out hover:scale-105 transition-all duration-300'>Login</h1>
+              </Link>
+            )}
           </div>
           <div className='my-20 flex flex-col'>
             <h1 className='text-xl font-thin font-dm'>/ / B   o   o   k    T   a   l   k   s</h1>
